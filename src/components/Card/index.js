@@ -39,7 +39,7 @@ function SimpleCard(props) {
         </Typography>
         {props.children}
       </CardContent>
-        {isDisplay && isTriggerNotAction && (<PlayArrow className={`txt-${"blue"}`} fontSize="large"/>)}
+        {isDisplay && isTriggerNotAction && (<PlayArrow className={`txt-${"blue"}`} style={{ fontSize: 90 }}/>)}
     </Card>
   );
 }
