@@ -13,12 +13,11 @@ top: 50%;
 transform: translateY(-50%);
 font-size: 60px !important;
 right: -38px;
-/* color: ${({ theme, color }) => theme[color] } !important; */
 `
 
 const StyledCard = styled(Card)`
   min-width: 350px;
-  padding-right: ${({ trigger }) => trigger ? 'inherit' : '40px' };
+  padding-left: ${(props) => props['data-trigger'] ? 'inherit' : '30px' };
 `
 
 function SimpleCard(props) {
@@ -26,7 +25,8 @@ function SimpleCard(props) {
   return (
     <StyledCard 
       className={`bg-${color} mb${10} relative overflow-visible`} 
-      trigger={isTrigger}>
+      classes=''
+      data-trigger={isTrigger}>
       <CardContent>
         <Typography className={`txt-white`} gutterBottom>
           {isDisplay ? (isTrigger ? "Trigger" : "Action") : (isTrigger ? "Trigger when:" : "Perform action:") }

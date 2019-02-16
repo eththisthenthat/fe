@@ -13,7 +13,7 @@ function ActionTransfer(props) {
   	<Card
   		title={title}
   		color={color}
-  		isTriggerNotAction={false}
+  		isTrigger={false}
   		isDisplay={isDisplay}>
       { isDisplay ? 
         (
