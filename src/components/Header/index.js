@@ -18,7 +18,7 @@ const Address = styled.div`
 export default () => {
     const [value] = useGlobalState('ethereum');
     const hash = get(value, 'web3.eth.defaultAccount')
-    return <AppBar position="static">
+    return <AppBar position="static" className='bg-blue'>
     <Container className="f-jcsb f-row">
     <div className='f-aic'>
       <Link to ='/' className="f-aic mr30 txt-white">

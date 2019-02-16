@@ -1,6 +1,5 @@
 import React from 'react'
 import { Container } from '../../components'
-import Card from '../../components/Card'
 import TriggerEthPriceDropCard from '../../components/Card/Cards/triggerEthPriceDropCard'
 import ActionTransfer from '../../components/Card/Cards/actionTransfer'
 

@@ -3,7 +3,7 @@ import Card from '../index.js'
 import Typography from '@material-ui/core/Typography';
 
 function TriggerEthPriceDropCard(props) {
-  const { isDisplay, price, classes } = props;
+  const { isDisplay, price } = props;
 
   const title = `ETH prices drop below${isDisplay ? ':' : ''}`;
   const color = "red";
@@ -12,7 +12,7 @@ function TriggerEthPriceDropCard(props) {
   	<Card
   		title={title}
   		color={color}
-  		isTriggerNotAction={true}
+  		isTrigger={true}
   		isDisplay={isDisplay}>
       { isDisplay ? 
         (

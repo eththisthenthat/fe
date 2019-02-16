@@ -4,7 +4,7 @@ import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 
 function ActionTransfer(props) {
-  const { isDisplay, amount, tokenSymbol, fromAddress, toAddress, classes } = props;
+  const { isDisplay, amount, tokenSymbol, fromAddress, toAddress  } = props;
 
   const title = `Transfer${isDisplay ? ':' : ''}`;
   const color = "blue";

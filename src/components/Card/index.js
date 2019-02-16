@@ -1,46 +1,44 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
-import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
-import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import {  PlayArrow } from '@material-ui/icons'
+import styled from 'styled-components'
 
-let styles = {
-  card: {
-    minWidth: 275,
-  },
-  bullet: {
-    display: 'inline-block',
-    margin: '0 2px',
-    transform: 'scale(0.8)',
-  },
-  title: {
-    fontSize: 14,
-  },
-  pos: {
-    marginBottom: 12,
-  },
-};
+const StyledArrow = styled(PlayArrow)`
+position: absolute;
+z-index: 1;
+top: 50%;
+transform: translateY(-50%);
+font-size: 60px !important;
+right: -38px;
+/* color: ${({ theme, color }) => theme[color] } !important; */
+`
+
+const StyledCard = styled(Card)`
+  padding-right: ${({ isTrigger }) => isTrigger ? 'inherit' : '40px' };
+`
 
 function SimpleCard(props) {
-  const { classes, title, subtitle, color, isTriggerNotAction, isDisplay } = props;
+  const { title, color, isTrigger, isDisplay } = props;
+  console.log('title, isTrigger', title, isTrigger)
 
   return (
-    <Card className={`bg-${color} mb${10}`}>
+    <StyledCard 
+      className={`bg-${color} mb${10} relative overflow-visible`} 
+      isTrigger={isTrigger}>
       <CardContent>
-        <Typography className={`txt-white ${classes.title}`} gutterBottom>
-          {isDisplay ? (isTriggerNotAction ? "Trigger" : "Action") : (isTriggerNotAction ? "Trigger when:" : "Perform action:") }
+        <Typography className={`txt-white`} gutterBottom>
+          {isDisplay ? (isTrigger ? "Trigger" : "Action") : (isTrigger ? "Trigger when:" : "Perform action:") }
         </Typography>
         <Typography variant="h5" component="h2" className={'txt-white'}>
           {title}
         </Typography>
         {props.children}
       </CardContent>
-        {isDisplay && isTriggerNotAction && (<PlayArrow className={`txt-${"blue"}`} style={{ fontSize: 90 }}/>)}
-    </Card>
+        {isDisplay && isTrigger && (<StyledArrow className={`txt-${color}`} />)}
+    </StyledCard>
   );
 }
 
@@ -48,4 +46,4 @@ SimpleCard.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(SimpleCard);
+export default SimpleCard;
