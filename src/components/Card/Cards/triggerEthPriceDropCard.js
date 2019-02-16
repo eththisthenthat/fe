@@ -12,7 +12,7 @@ function TriggerEthPriceDropCard(props) {
   	<Card
   		title={title}
   		color={color}
-  		isTrigger={true}
+  		isTrigger
   		isDisplay={isDisplay}>
       { isDisplay ? 
         (

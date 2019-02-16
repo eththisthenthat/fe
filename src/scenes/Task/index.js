@@ -1,16 +1,12 @@
 import React from 'react'
-import { Container, Card } from '../../components'
+import { Container } from '../../components'
 import TriggerEthPriceDropCard from '../../components/Card/Cards/triggerEthPriceDropCard'
+import ActionTransfer from '../../components/Card/Cards/actionTransfer'
 export default () => <Container>
   	<h2>My Tasks</h2>
     <div className='flex'>
-    <Card 
-    title="ETH prices drop below:" 
-    color="blue" 
-    isTrigger={true} 
-    isDisplay={true}>
-  	</Card>
-  	<TriggerEthPriceDropCard isDisplay={false} price={100} />
+    <TriggerEthPriceDropCard isDisplay={true} />
+  	<ActionTransfer isDisplay />
     </div>
 
 </Container>

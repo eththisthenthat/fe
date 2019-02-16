@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
@@ -13,12 +14,11 @@ top: 50%;
 transform: translateY(-50%);
 font-size: 60px !important;
 right: -38px;
-/* color: ${({ theme, color }) => theme[color] } !important; */
 `
 
 const StyledCard = styled(Card)`
   min-width: 350px;
-  padding-right: ${({ trigger }) => trigger ? 'inherit' : '40px' };
+  padding-left: ${(props) => props['data-trigger'] ? 'inherit' : '30px' };
 `
 
 function SimpleCard(props) {
@@ -26,7 +26,7 @@ function SimpleCard(props) {
   return (
     <StyledCard 
       className={`bg-${color} mb${10} relative overflow-visible`} 
-      trigger={isTrigger}>
+      data-trigger={isTrigger}>
       <CardContent>
         <Typography className={`txt-white`} gutterBottom>
           {isDisplay ? (isTrigger ? "Trigger" : "Action") : (isTrigger ? "Trigger when:" : "Perform action:") }
@@ -45,4 +45,4 @@ SimpleCard.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default SimpleCard;
+export default withStyles({})(SimpleCard);
