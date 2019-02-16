@@ -1,4 +1,5 @@
 import React from 'react'
+import { Container } from '../../components'
 export default () => {
-  return <div>Ethttt Landing page</div>
+  return <Container>Ethttt Landing page</Container>
 }
