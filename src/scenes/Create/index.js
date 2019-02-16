@@ -2,7 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 import { Container } from '../../components'
 import TriggerEthPriceDropCard from '../../components/Card/Cards/triggerEthPriceDropCard'
-import ActionTransfer from '../../components/Card/Cards/actionTransfer'
+import ActionTransferCard from '../../components/Card/Cards/actionTransferCard'
+import ComingSoonCard from '../../components/Card/Cards/comingSoonCard'
 
 const Scrollable = styled.div`
   height: 100%;
@@ -12,25 +13,28 @@ const Scrollable = styled.div`
 export default () => {
   return <Container className='flex'>
     <div className='mr20'>
-      <h2>Triggers</h2>
+      <h2>Select Trigger</h2>
       <Scrollable>
         <TriggerEthPriceDropCard isDisplay={true} price={100} />
-        <TriggerEthPriceDropCard isDisplay={true} price={100} />
-        <TriggerEthPriceDropCard isDisplay={true} price={100} />
-        <TriggerEthPriceDropCard isDisplay={true} price={100} />
-        <TriggerEthPriceDropCard isDisplay={true} price={100} />
-        <TriggerEthPriceDropCard isDisplay={true} price={100} />
-        <TriggerEthPriceDropCard isDisplay={true} price={100} />
-        <TriggerEthPriceDropCard isDisplay={true} price={100} />
-        <TriggerEthPriceDropCard isDisplay={true} price={100} />
-        <TriggerEthPriceDropCard isDisplay={true} price={100} />
-        <TriggerEthPriceDropCard isDisplay={true} price={100} />
-        <TriggerEthPriceDropCard isDisplay={true} price={100} />
+        <ComingSoonCard title={"Contract Event fires"} color={"orange"} isTrigger={true} />
+        <ComingSoonCard title={"Token transfer occurs"} color={"purple"} isTrigger={true} />
+        <ComingSoonCard title={"Token transfer occurs"} color={"purple"} isTrigger={true} />
+        <ComingSoonCard title={"Token transfer occurs"} color={"purple"} isTrigger={true} />
+        <ComingSoonCard title={"Token transfer occurs"} color={"purple"} isTrigger={true} />
+        <ComingSoonCard title={"Token transfer occurs"} color={"purple"} isTrigger={true} />
+        <ComingSoonCard title={"Token transfer occurs"} color={"purple"} isTrigger={true} />
       </Scrollable>
     </div>
     <Scrollable>
-      <h2>Actions</h2>
-      <ActionTransfer isDisplay={true} />
+      <h2>Select Action</h2>
+      <ActionTransferCard isDisplay={true} />
+      <ComingSoonCard title={"Send SMS"} color={"green"} isTrigger={false} />
+      <ComingSoonCard title={"Send Email"} color={"blue"} isTrigger={false} />
+      <ComingSoonCard title={"Send Email"} color={"blue"} isTrigger={false} />
+      <ComingSoonCard title={"Send Email"} color={"blue"} isTrigger={false} />
+      <ComingSoonCard title={"Send Email"} color={"blue"} isTrigger={false} />
+      <ComingSoonCard title={"Send Email"} color={"blue"} isTrigger={false} />
+      <ComingSoonCard title={"Send Email"} color={"blue"} isTrigger={false} />
     </Scrollable>
     </Container>
 }
