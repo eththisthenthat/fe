@@ -2,8 +2,9 @@ import React from 'react'
 import Link from "../Link";
 import Container from "../Container";
 import { AppBar, Typography } from '@material-ui/core'
-import { Blockie } from 'rimble-ui'
+import shortenAddress from '../../utils/shortenAddress'
 import { get } from "lodash";
+import Jazzicon, { jsNumberForAddress } from 'react-jazzicon'
 import { useGlobalState } from '../../store'
 import {  PlayArrow } from '@material-ui/icons'
 export default () => {
@@ -12,17 +13,18 @@ export default () => {
     return <AppBar position="static">
     <Container className="f-jcsb f-row">
     <div className='f-aic'>
-      <Link to ='/' className="f-aic mr20 txt-white">
+      <Link to ='/' className="f-aic mr30 txt-white">
         <Typography variant="h6" className='txt-white'>eth</Typography>
         <PlayArrow />
         <Typography variant="h6" className='txt-white'>that</Typography>
       </Link>
-      <Typography><Link to='/tasks' style={{color: 'white'}}>Tasks</Link></Typography>
+      <Typography><Link to='/tasks' className='txt-white mr20'>Tasks</Link></Typography>
+      <Typography><Link to='/create' className='txt-white'>Create</Link></Typography>
       </div>
       <div className='f-aic'>
       {hash && <> 
-        <Blockie opts={{seed: hash, color: "#dfe", bgcolor: "#a71", size: 15, scale: 3, spotcolor: "#000"}} />
-        <Typography> {hash} </Typography>
+        <Jazzicon diameter={25} seed={jsNumberForAddress(hash)} className="mr15" />
+        <Typography className='txt-white ml15'> {shortenAddress(hash)} </Typography>
         </>
       }
       </div>
