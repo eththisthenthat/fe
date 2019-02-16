@@ -6,8 +6,16 @@ import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import ExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 
-function handleChange() {
-	this.props.expanded = !this.props.expanded;
+function renderTriggerCard() {
+	return (
+		<TriggerEthPriceDropCard isDisplay />
+	)
+} 
+
+function renderActionCard() {
+	return (
+		<ActionTransferCard isDisplay />
+	)
 } 
 
 function Task(props) {
@@ -18,8 +26,8 @@ function Task(props) {
   	<div className='flex'>
       <ExpansionPanel expanded={expanded} onChange={() => setExpanded(!expanded)}>
         <ExpansionPanelSummary style={{padding: 0, margin: 0}}>
-  				<TriggerEthPriceDropCard isDisplay />
-					<ActionTransferCard isDisplay />
+  				{ renderTriggerCard() }
+  				{ renderActionCard() }
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
           <TaskHistory />
