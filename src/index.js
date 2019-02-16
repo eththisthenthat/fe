@@ -3,18 +3,21 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import assist from 'bnc-assist'
+import { dispatch } from './store' 
 import * as serviceWorker from './serviceWorker';
 var bncAssistConfig = {
   dappId: '26fb439f-ff1e-48f8-9ddf-29a6dcf7fd49',       // [String] The API key supplied to you by Blocknative when you sign up for an account
-
   networkId:  4 // [Integer] The network ID of the Ethereum network your dapp is deployd on.
-                        //           See below for instructions on how to setup for local blockchains.
 };
 
 var assistInstance = assist.init(bncAssistConfig);
 assistInstance.onboard()
   .then(function(success) {
     console.log('success', success)
+    dispatch({
+      type: 'receiveWeb3',
+      web3: window.web3
+    })
     // User has been successfully onboarded and is ready to transact
     // This means we can be sure of the follwing user properties:
     //  - They are using a compatible browser

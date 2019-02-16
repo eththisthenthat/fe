@@ -4,10 +4,19 @@
   "private": true,
   "homepage": "https://ethttt.com",
   "dependencies": {
+    "@material-ui/core": "^3.9.2",
+    "@material-ui/icons": "^3.0.2",
     "bnc-assist": "^0.3.3",
+    "lodash": "^4.17.11",
     "react": "^16.8.2",
     "react-dom": "^16.8.2",
-    "react-scripts": "2.1.5"
+    "react-hooks-global-state": "^0.7.0",
+    "react-router-dom": "^4.3.1",
+    "react-scripts": "2.1.5",
+    "redux": "^4.0.1",
+    "redux-thunk": "^2.3.0",
+    "rimble-ui": "^0.4.1",
+    "styled-components": "^4.1.3"
   },
   "scripts": {
     "predeploy": "npm run build",
