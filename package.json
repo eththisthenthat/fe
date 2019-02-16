@@ -4,6 +4,7 @@
   "private": true,
   "homepage": "https://ethttt.com",
   "dependencies": {
+    "bnc-assist": "^0.3.3",
     "react": "^16.8.2",
     "react-dom": "^16.8.2",
     "react-scripts": "2.1.5"
