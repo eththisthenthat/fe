@@ -25,29 +25,20 @@ const styles = {
 };
 
 function SimpleCard(props) {
-  const { classes } = props;
+  const { classes, title, subtitle, color, isTask } = props;
   const bull = <span className={classes.bullet}>•</span>;
 
   return (
     <Card className={classes.card}>
       <CardContent>
         <Typography className={classes.title} color="textSecondary" gutterBottom>
-          Word of the Day
+          {subtitle}
         </Typography>
         <Typography variant="h5" component="h2">
-          be
-          {bull}
-          nev
-          {bull}o{bull}
-          lent
+          {title}
         </Typography>
         <Typography className={classes.pos} color="textSecondary">
           adjective
-        </Typography>
-        <Typography component="p">
-          well meaning and kindly.
-          <br />
-          {'"a benevolent smile"'}
         </Typography>
       </CardContent>
       <CardActions>

@@ -1,9 +1,10 @@
 import React from 'react'
+import { Container } from '../../components'
 import Card from '../../components/Card'
 
 export default () => {
-  return <div>
+  return <Container>
   	<div>Ethttt Landing page</div>
   	<Card />
-  </div>
+  </Container>
 }
