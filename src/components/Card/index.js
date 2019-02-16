@@ -17,17 +17,16 @@ right: -38px;
 `
 
 const StyledCard = styled(Card)`
-  padding-right: ${({ isTrigger }) => isTrigger ? 'inherit' : '40px' };
+  min-width: 350px;
+  padding-right: ${({ trigger }) => trigger ? 'inherit' : '40px' };
 `
 
 function SimpleCard(props) {
   const { title, color, isTrigger, isDisplay } = props;
-  console.log('title, isTrigger', title, isTrigger)
-
   return (
     <StyledCard 
       className={`bg-${color} mb${10} relative overflow-visible`} 
-      isTrigger={isTrigger}>
+      trigger={isTrigger}>
       <CardContent>
         <Typography className={`txt-white`} gutterBottom>
           {isDisplay ? (isTrigger ? "Trigger" : "Action") : (isTrigger ? "Trigger when:" : "Perform action:") }
