@@ -25,16 +25,18 @@ export default () => {
         <ComingSoonCard title={"Token transfer occurs"} color={"purple"} isTrigger={true} />
       </Scrollable>
     </div>
-    <Scrollable>
+    <div>
       <h2>Select Action</h2>
-      <ActionTransferCard isDisplay={true} />
-      <ComingSoonCard title={"Send SMS"} color={"green"} isTrigger={false} />
-      <ComingSoonCard title={"Send Email"} color={"blue"} isTrigger={false} />
-      <ComingSoonCard title={"Send Email"} color={"blue"} isTrigger={false} />
-      <ComingSoonCard title={"Send Email"} color={"blue"} isTrigger={false} />
-      <ComingSoonCard title={"Send Email"} color={"blue"} isTrigger={false} />
-      <ComingSoonCard title={"Send Email"} color={"blue"} isTrigger={false} />
-      <ComingSoonCard title={"Send Email"} color={"blue"} isTrigger={false} />
-    </Scrollable>
+      <Scrollable>
+        <ActionTransferCard isDisplay={true} />
+        <ComingSoonCard title={"Send SMS"} color={"green"} isTrigger={false} />
+        <ComingSoonCard title={"Send Email"} color={"blue"} isTrigger={false} />
+        <ComingSoonCard title={"Send Email"} color={"blue"} isTrigger={false} />
+        <ComingSoonCard title={"Send Email"} color={"blue"} isTrigger={false} />
+        <ComingSoonCard title={"Send Email"} color={"blue"} isTrigger={false} />
+        <ComingSoonCard title={"Send Email"} color={"blue"} isTrigger={false} />
+        <ComingSoonCard title={"Send Email"} color={"blue"} isTrigger={false} />
+      </Scrollable>
+      </div>
     </Container>
 }
