@@ -1,9 +1,9 @@
 import React from 'react'
 import styled from 'styled-components'
 import { Container } from '../../components'
-import TriggerEthPriceDropCard from '../../components/Card/Cards/triggerEthPriceDropCard'
-import ActionTransferCard from '../../components/Card/Cards/actionTransferCard'
-import ComingSoonCard from '../../components/Card/Cards/comingSoonCard'
+import triggers from '../../store/staticTriggers'
+import actions from '../../store/staticActions'
+import getCardViaType from '../../utils/getCardViaType'
 
 const Scrollable = styled.div`
   height: 100%;
@@ -15,27 +15,19 @@ export default () => {
     <div className='mr20'>
       <h2>Select Trigger</h2>
       <Scrollable>
-        <TriggerEthPriceDropCard isDisplay={true} price={100} />
-        <ComingSoonCard title={"Contract Event fires"} color={"orange"} isTrigger={true} />
-        <ComingSoonCard title={"Token transfer occurs"} color={"purple"} isTrigger={true} />
-        <ComingSoonCard title={"Token transfer occurs"} color={"purple"} isTrigger={true} />
-        <ComingSoonCard title={"Token transfer occurs"} color={"purple"} isTrigger={true} />
-        <ComingSoonCard title={"Token transfer occurs"} color={"purple"} isTrigger={true} />
-        <ComingSoonCard title={"Token transfer occurs"} color={"purple"} isTrigger={true} />
-        <ComingSoonCard title={"Token transfer occurs"} color={"purple"} isTrigger={true} />
+        {triggers.map(trigger => {
+          const TriggerCard = getCardViaType(trigger.type) 
+          return <TriggerCard key={trigger.type} className='mb10' />
+        })}
       </Scrollable>
     </div>
     <div>
       <h2>Select Action</h2>
       <Scrollable>
-        <ActionTransferCard isDisplay={true} />
-        <ComingSoonCard title={"Send SMS"} color={"green"} isTrigger={false} />
-        <ComingSoonCard title={"Send Email"} color={"blue"} isTrigger={false} />
-        <ComingSoonCard title={"Send Email"} color={"blue"} isTrigger={false} />
-        <ComingSoonCard title={"Send Email"} color={"blue"} isTrigger={false} />
-        <ComingSoonCard title={"Send Email"} color={"blue"} isTrigger={false} />
-        <ComingSoonCard title={"Send Email"} color={"blue"} isTrigger={false} />
-        <ComingSoonCard title={"Send Email"} color={"blue"} isTrigger={false} />
+        {actions.map(action=> {
+          const ActionCard = getCardViaType(action.type) 
+          return <ActionCard key={action.type} className='mb10' display/>
+        })}
       </Scrollable>
       </div>
     </Container>
