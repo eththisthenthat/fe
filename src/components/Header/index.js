@@ -7,6 +7,14 @@ import { get } from "lodash";
 import Jazzicon, { jsNumberForAddress } from 'react-jazzicon'
 import { useGlobalState } from '../../store'
 import {  PlayArrow } from '@material-ui/icons'
+import styled from 'styled-components'
+const Address = styled.div`
+    background-color: rgba(255,255,255, .2);
+    border-radius: 10px;
+    padding: 0 6px;
+    display: flex;
+    align-items: center;
+`
 export default () => {
     const [value] = useGlobalState('ethereum');
     const hash = get(value, 'web3.eth.defaultAccount')
@@ -21,13 +29,11 @@ export default () => {
       <Typography><Link to='/tasks' className='txt-white mr20'>Tasks</Link></Typography>
       <Typography><Link to='/create' className='txt-white'>Create</Link></Typography>
       </div>
-      <div className='f-aic'>
-      {hash && <> 
+      {hash && <Address>
         <Jazzicon diameter={25} seed={jsNumberForAddress(hash)} className="mr15" />
         <Typography className='txt-white ml15'> {shortenAddress(hash)} </Typography>
-        </>
+      </Address>
       }
-      </div>
       </Container>
   </AppBar>
   }
