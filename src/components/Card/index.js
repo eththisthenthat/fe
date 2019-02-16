@@ -13,7 +13,7 @@ top: 50%;
 transform: translateY(-50%);
 font-size: 60px !important;
 right: -38px;
-color: ${({ theme, color }) => theme[color] } !important;
+/* color: ${({ theme, color }) => theme[color] } !important; */
 `
 
 const StyledCard = styled(Card)`
@@ -37,7 +37,7 @@ function SimpleCard(props) {
         </Typography>
         {props.children}
       </CardContent>
-        {isDisplay && isTrigger && (<StyledArrow color={color} />)}
+        {isDisplay && isTrigger && (<StyledArrow className={`txt-${color}`} />)}
     </StyledCard>
   );
 }

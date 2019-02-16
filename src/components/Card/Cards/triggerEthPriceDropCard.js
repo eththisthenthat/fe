@@ -5,18 +5,36 @@ import Typography from '@material-ui/core/Typography';
 function TriggerEthPriceDropCard(props) {
   const { isDisplay, price } = props;
 
+  const title = `ETH prices drop below${isDisplay ? ':' : ''}`;
+  const color = "red";
+
   return (
   	<Card
-  		title="ETH prices drop below:"
-  		color="green"
+  		title={title}
+  		color={color}
   		isTrigger={true}
   		isDisplay={isDisplay}>
-  		<Typography className={`txt-white mts${5}`} gutterBottom>
-        Price
-      </Typography>
-  		<Typography variant="h5" component="h2" className={'txt-white'}>
-        {price}
-      </Typography>
+      { isDisplay ? 
+        (
+      		<div>
+            <Typography className={`txt-white mt${10}`} gutterBottom>
+              Price
+            </Typography>
+        		<Typography variant="h5" component="h2" className={'txt-white'}>
+              {price}
+            </Typography>
+          </div>
+        ) : (
+          <div>
+            <Typography className={`txt-white mt${10}`} gutterBottom>
+              Enter Price
+            </Typography>
+            <Typography variant="h5" component="h2" className={'txt-white'}>
+              Placeholder
+            </Typography>
+          </div>
+        )
+      }
   	</Card>
   );
 }
