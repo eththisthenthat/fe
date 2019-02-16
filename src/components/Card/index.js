@@ -6,8 +6,9 @@ import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import {  PlayArrow } from '@material-ui/icons'
 
-const styles = {
+let styles = {
   card: {
     minWidth: 275,
   },
@@ -25,25 +26,20 @@ const styles = {
 };
 
 function SimpleCard(props) {
-  const { classes, title, subtitle, color, isTask } = props;
-  const bull = <span className={classes.bullet}>•</span>;
+  const { classes, title, subtitle, color, isTriggerNotAction, isDisplay } = props;
 
   return (
-    <Card className={classes.card}>
+    <Card className={`bg-${color} mb${10}`}>
       <CardContent>
-        <Typography className={classes.title} color="textSecondary" gutterBottom>
-          {subtitle}
+        <Typography className={`txt-white ${classes.title}`} gutterBottom>
+          {isDisplay ? (isTriggerNotAction ? "Trigger" : "Action") : (isTriggerNotAction ? "Trigger when:" : "Perform action:") }
         </Typography>
-        <Typography variant="h5" component="h2">
+        <Typography variant="h5" component="h2" className={'txt-white'}>
           {title}
         </Typography>
-        <Typography className={classes.pos} color="textSecondary">
-          adjective
-        </Typography>
+        {props.children}
       </CardContent>
-      <CardActions>
-        <Button size="small">Learn More</Button>
-      </CardActions>
+        {isDisplay && isTriggerNotAction && (<PlayArrow />)}
     </Card>
   );
 }
