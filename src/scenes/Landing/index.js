@@ -1,14 +1,10 @@
 import React from 'react'
 import { Container } from '../../components'
-import TriggerEthPriceDropCard from '../../components/Card/Cards/triggerEthPriceDropCard'
-import ActionTransferCard from '../../components/Card/Cards/actionTransferCard'
-
 export default () => {
-  return <Container>
-  	<h2>My Tasks</h2>
-  	<TriggerEthPriceDropCard isDisplay={true} price={100} />
-  	<TriggerEthPriceDropCard isDisplay={false} price={100} />
-  	<ActionTransferCard isDisplay={true} />
-  	<ActionTransferCard isDisplay={false} />
+  return <Container className='f-jcsa'>
+    <div className='tac'>
+      <h1 style={{fontSize: '150px', margin: '40px 0 0'}}>ETHTTT</h1>
+      <span>automating your blockchain transactions, inspired by IFTTT & Zap</span>
+    </div>
   </Container>
 }

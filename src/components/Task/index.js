@@ -29,13 +29,12 @@ function renderTriggerCard(task) {
 function renderActionCard(task) {
 	if(task.triggerId === 'transfer-eth') {
 		return (
-			<ActionTransferCard task={task} isDisplay />
+			<ActionTransferCard task={task} isDisplay isTask />
 		)
 	}
 	else {
 		return (
 			<ActionTransferCard task={task} isDisplay isTask/>
-			<ActionTransferCard isDisplay isTask />
 		)		
 	}
 }
