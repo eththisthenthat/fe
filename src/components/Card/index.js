@@ -34,7 +34,7 @@ function SimpleCard({ title, color, isTrigger, isDisplay, className, ...props })
     <StyledCard 
       data-display={isDisplay}
       data-trigger={isTrigger}
-      className={`bg-${color} relative overflow-visible ${className || ''}`} 
+      className={`bg-${color} mb10 relative overflow-visible ${className || ''}`} 
       {...props}
       >
       <CardContent>

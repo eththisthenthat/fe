@@ -65,7 +65,7 @@ function Task(props) {
   const [active, setActive] = useState(isActive);
 
   return (
-  	<div className='flex'>
+  	<div className={`flex`}>
       <ExpansionPanel expanded={expanded} onChange={() => setExpanded(!expanded)}>
         <ExpansionPanelSummary>
   				{ renderTriggerCard(task) }
@@ -78,7 +78,7 @@ function Task(props) {
       <StyledFormGroup>
   			<FormControlLabel
           control={
-            <Checkbox defaultChecked color="default" value="checkedG" />
+            <Checkbox color="default" value="checkedG" />
           }
         	label="Active"
       	/>

@@ -4,6 +4,7 @@ import { Container } from '../../components'
 import triggers from '../../store/staticTriggers'
 import actions from '../../store/staticActions'
 import getCardViaType from '../../utils/getCardViaType'
+import ComingSoonCard from '../../components/Card/Cards/comingSoonCard'
 
 const Scrollable = styled.div`
   height: 100%;
@@ -19,6 +20,8 @@ export default () => {
           const TriggerCard = getCardViaType(trigger.type) 
           return <TriggerCard key={trigger.type} className='mb10' />
         })}
+        <ComingSoonCard title="Contract Event fires" color="green" />
+        <ComingSoonCard title="Token transfer occurs" color="blueDark" />
       </Scrollable>
     </div>
     <div>
@@ -28,6 +31,8 @@ export default () => {
           const ActionCard = getCardViaType(action.type) 
           return <ActionCard key={action.type} className='mb10' />
         })}
+        <ComingSoonCard title="Send SMS Message" color="orange" />
+        <ComingSoonCard title="Send Email" color="black" />
       </Scrollable>
       </div>
     </Container>
