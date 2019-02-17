@@ -9,14 +9,14 @@ function TriggerEthPriceDropCard({ isDisplay, price, enableInputs, onChange, tas
   const title = `ETH prices drop below${isDisplay ? ':' : ''}`;
   const color = "red";
   const [values, setValues] = useState({})
-  const fields = triggers.find(trigger => trigger.type === 'ethPriceDrop').fields
+  const fields = triggers.find(trigger => trigger.type === 'eth-price-below').fields
   const handleChange = (field,e) => {
     const newValues = {
       ...values,
       [field.name]: e.target.value
     }
     setValues(newValues)
-    onChange && onChange(newValues, 'ethPriceDrop', 'action')
+    onChange && onChange(newValues, 'eth-price-below', 'trigger')
   }
 
   return (

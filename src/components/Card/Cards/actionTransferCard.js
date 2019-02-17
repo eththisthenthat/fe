@@ -10,14 +10,14 @@ function ActionTransfer({ isDisplay, amount, toAddress, enableInputs, children, 
   const title = `Transfer ETH${isDisplay ? ':' : ''}`;
   const color = "blue";
   const [values, setValues] = useState({})
-  const fields = actions.find(action => action.type === 'ethTransfer').fields
+  const fields = actions.find(action => action.type === 'eth-transfer').fields
   const handleChange = (field,e) => {
     const newValues = {
       ...values,
       [field.name]: e.target.value
     }
     setValues(newValues)
-    onChange && onChange(newValues, 'ethTransfer', 'action')
+    onChange && onChange(newValues, 'eth-transfer', 'action')
   }
 
   return (

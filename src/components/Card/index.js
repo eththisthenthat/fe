@@ -20,22 +20,21 @@ const StyledCard = styled(Card)`
   min-width: 350px;
   opacity: ${(props) => props['data-disabled'] && '.3' };
   transform: ${(props) => props['data-disabled'] && 'scale(.9)' };
-  & + & {
-    padding-left: ${(props) => props['data-trigger'] && !props['data-display'] ? 'inherit' : '30px' };
-  }
-  border-top-right-radius: ${(props) => (props['data-display'] && props['data-trigger']) ? 0 : '' } !important;
-  border-bottom-right-radius: ${(props) => (props['data-display'] && props['data-trigger']) ? 0 : '' } !important;
-  border-top-left-radius: ${(props) => (props['data-display'] && !props['data-trigger']) ? 0 : '' } !important;
-  border-bottom-left-radius: ${(props) => (props['data-display'] && !props['data-trigger']) ? 0 : '' } !important;
+  padding-left: ${(props) => !props['data-trigger'] && props['data-task'] ? '30px' : 'inherit' };
+  border-top-right-radius: ${(props) => (props['data-task'] && props['data-trigger']) ? 0 : '' } !important;
+  border-bottom-right-radius: ${(props) => (props['data-task'] && props['data-trigger']) ? 0 : '' } !important;
+  border-top-left-radius: ${(props) => (props['data-task'] && !props['data-trigger']) ? 0 : '' } !important;
+  border-bottom-left-radius: ${(props) => (props['data-task'] && !props['data-trigger']) ? 0 : '' } !important;
 }
 `
 
-function SimpleCard({ title, color, isTrigger, isDisplay, className, disabled, ...props }) {
+function SimpleCard({ title, color, isTrigger, isDisplay, className, disabled, isTask, ...props }) {
   return (
     <StyledCard 
       data-display={isDisplay}
       data-trigger={isTrigger}
       data-disabled={disabled}
+      data-task={isTask}
       className={`bg-${color} ${isDisplay ? '' : 'mb10'} relative overflow-visible ${className || ''}`} 
       {...props}
       >

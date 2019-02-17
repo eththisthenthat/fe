@@ -1,11 +1,15 @@
 import React, {useState} from 'react'
+import { withRouter } from 'react-router-dom'
 import styled from 'styled-components'
+import { useGlobalState } from '../../store'
 import { Container } from '../../components'
 import triggers from '../../store/staticTriggers'
 import actions from '../../store/staticActions'
 import getCardViaType from '../../utils/getCardViaType'
 import ComingSoonCard from '../../components/Card/Cards/comingSoonCard'
 import Button from '@material-ui/core/Button';
+import axios from 'axios'
+import { omit, get } from 'lodash'
 
 const Scrollable = styled.div`
   height: 100%;
@@ -25,55 +29,70 @@ const CreateButton = (props) => <StyledButton
   Create
 </StyledButton>
 
-export default () => {
+export default withRouter((props) => {
+  console.log('props', props)
   const [selectedTrigger, setSelectedTrigger] = useState({})
   const [selectedAction, setSelectedAction] = useState({})
+  const [ethereum] = useGlobalState('ethereum');
+  const hash = get(ethereum, 'web3.eth.defaultAccount')
   const handleChange = (values, name, cardType) => {
-    console.log('values, name, cardType', values, name, cardType)
     if(cardType === 'action') setSelectedAction({ type: name, ...values })
     if(cardType === 'trigger') setSelectedTrigger({ type: name, ...values })
   }
 
   const handleClick = () => {
     console.log(selectedTrigger, selectedAction)
+    axios.post('https://it3ptht0ig.execute-api.us-east-1.amazonaws.com/dev/tasks',
+      {
+        "triggerId": selectedTrigger.type,
+        "actionId": selectedAction.type,
+        "address": hash,
+        "isActive": true,
+        "triggerMeta": {...omit(selectedTrigger, 'type')},
+        "actionMeta": {...omit(selectedAction, 'type')},
+    } ).then( res => {
+      props.history.push('/tasks')
+    })
   }
 
-  return <Container className='flex'>
-    <div className='mr20'>
-      <h2>Select Trigger</h2>
-      <Scrollable>
-        {triggers.map(trigger => {
-          const TriggerCard = getCardViaType(trigger.type) 
-          return <TriggerCard 
-            onClick={()=>setSelectedTrigger({type: trigger.type})}
-            enableInputs={trigger.type === selectedTrigger.type} 
-            disabled={selectedTrigger.type && trigger.type !== selectedTrigger.type} 
-            onChange={handleChange}
-            key={trigger.type} 
-            className='mb10 pointer' />
-        })}
-        <ComingSoonCard title="Contract Event fires" color="green" />
-        <ComingSoonCard title="Token transfer occurs" color="blueDark" />
-      </Scrollable>
-    </div>
-    <div>
-      <h2>Select Action</h2>
-      <Scrollable>
-        {actions.map(action=> {
-          const ActionCard = getCardViaType(action.type) 
-          return <ActionCard
-            onClick={()=>setSelectedAction({type: action.type})}
-            enableInputs={action.type === selectedAction.type} 
-            disabled={selectedAction.type && (action.type !== selectedAction.type)} 
-            key={action.type} 
-            onChange={handleChange}
-            className='mb10 pointer'>
-              {selectedAction.type && selectedTrigger.type && <CreateButton onClick={handleClick} />}
-            </ActionCard>
-        })}
-        <ComingSoonCard title="Send SMS Message" color="orange" />
-        <ComingSoonCard title="Send Email" color="black" />
-      </Scrollable>
+  return <Container className='f-jcsa'>
+    <div className='flex'>
+      <div className='mr20'>
+        <h2>Select Trigger</h2>
+        <Scrollable>
+          {triggers.map(trigger => {
+            const TriggerCard = getCardViaType(trigger.type) 
+            return <TriggerCard 
+              onClick={()=>setSelectedTrigger({type: trigger.type})}
+              enableInputs={trigger.type === selectedTrigger.type} 
+              disabled={selectedTrigger.type && trigger.type !== selectedTrigger.type} 
+              onChange={handleChange}
+              key={trigger.type} 
+              className='mb10 pointer' />
+          })}
+          <ComingSoonCard disabled={selectedTrigger.type} title="Contract Event fires" color="green" />
+          <ComingSoonCard disabled={selectedTrigger.type} title="Token transfer occurs" color="blueDark" />
+        </Scrollable>
+      </div>
+      <div>
+        <h2>Select Action</h2>
+        <Scrollable>
+          {actions.map(action=> {
+            const ActionCard = getCardViaType(action.type) 
+            return <ActionCard
+              onClick={()=>setSelectedAction({type: action.type})}
+              enableInputs={action.type === selectedAction.type} 
+              disabled={selectedAction.type && (action.type !== selectedAction.type)} 
+              key={action.type} 
+              onChange={handleChange}
+              className='mb10 pointer'>
+                {selectedAction.type && selectedTrigger.type && <CreateButton onClick={handleClick} />}
+              </ActionCard>
+          })}
+          <ComingSoonCard disabled={selectedAction.type} title="Send SMS Message" color="orange" />
+          <ComingSoonCard disabled={selectedAction.type} title="Send Email" color="black" />
+        </Scrollable>
+        </div>
       </div>
     </Container>
-}
+})

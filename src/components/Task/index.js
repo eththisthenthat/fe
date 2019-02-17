@@ -10,6 +10,7 @@ import ActionTransferCard from '../Card/Cards/actionTransferCard'
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import MuiExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
+import axios from 'axios'
 import styled from 'styled-components'
 
 function renderTriggerCard(task) {
@@ -20,7 +21,7 @@ function renderTriggerCard(task) {
 	}
 	else {
 		return (
-			<TriggerEthPriceDropCard task={task} isDisplay />
+			<TriggerEthPriceDropCard task={task} isDisplay isTask/>
 		)		
 	}
 } 
@@ -33,7 +34,8 @@ function renderActionCard(task) {
 	}
 	else {
 		return (
-			<ActionTransferCard task={task} isDisplay />
+			<ActionTransferCard task={task} isDisplay isTask/>
+			<ActionTransferCard isDisplay isTask />
 		)		
 	}
 }
@@ -67,6 +69,14 @@ function Task(props) {
   const { isDisplay, task, isActive } = props;
   const [expanded, setExpanded] = useState(false);
   const [active, setActive] = useState(isActive);
+  const handleChange = async (e) => {
+    setActive(e.target.value)
+    const res = await axios.put(`https://it3ptht0ig.execute-api.us-east-1.amazonaws.com/dev/tasks/${task.id}`,{
+      active: e.target.value
+    })
+    console.log(res)
+    // handle api call
+  }
 
   return (
   	<div className={`flex mb10`}>
@@ -81,9 +91,8 @@ function Task(props) {
       </ExpansionPanel>
       <StyledFormGroup>
   			<FormControlLabel
-          control={
-            <Checkbox color="default" value="checkedG" />
-          }
+          control={ <Checkbox color="default" checked={active} /> }
+          onChange={handleChange}
         	label="Active"
       	/>
       </StyledFormGroup>

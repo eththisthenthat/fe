@@ -24,16 +24,18 @@ function TaskScene(props) {
 	}
 
 	return (
-		<Container>
-	  	<h2>My Tasks</h2>
-	  	{tasks.length > 0 ?
-	      tasks.map((data, i) => (
-			    <div key={i}>
-			    	<Task task={data} />
-			    </div>
-	      )) : 
-	      (<div>No Tasks available</div>)
-    	}
+		<Container className="f-jcsa">
+			<div>
+		  	<h2>My Tasks</h2>
+		  	{tasks.length > 0 ?
+		      tasks.map((data, i) => (
+				    <div key={i}>
+				    	<Task task={data} />
+				    </div>
+		      )) : 
+		      (<div>No Tasks available</div>)
+	    	}
+      </div>
 		</Container>
 	)
 
