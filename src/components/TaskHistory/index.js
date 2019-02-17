@@ -11,7 +11,7 @@ import shorten from '../../utils/shortenAddress'
 function TaskHistory({task, ...props}) {
 
   // Get Task History for Task
-  const taskHistory = task.taskHistory;
+  const taskHistory = task.taskHistory || [];
 
   return (
     <div style={{width: '100%'}}>

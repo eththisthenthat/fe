@@ -2,24 +2,27 @@ import React, {useState} from 'react'
 import axios from 'axios'
 import { Container, Task, Link } from '../../components'
 import { useGlobalState } from '../../store'
+import getApi from '../../utils/getApiUrl'
 import { get } from 'lodash'
 
 function TaskScene(props) {
-	let hasQueried = false;
-	 const [ethereum] = useGlobalState('ethereum');
+  const [hasQueried, setHasQueried] = useState(false) 
+	const [ethereum] = useGlobalState('ethereum');
   const hash = get(ethereum, 'web3.eth.defaultAccount')
-	const [tasks, setTasks] = useState([]);
+  const api = getApi()
+  const [tasks, setTasks] = useState([]);
+  // console.log('api', api)
 
 	if(tasks.length === 0 && !hasQueried ) {
-	  axios.get(`https://d0ob9xv927.execute-api.us-east-1.amazonaws.com/dev/userTasks/${hash}`)
+	  axios.get(`${api}/userTasks/${hash}`)
 	  .then(function (response) {
 	    console.log('Success');
-	    console.log(response);
-	    hasQueried = true;
+      console.log(response);
+      setHasQueried(true)
 	    setTasks(response.data.Items)
 	  })
 	  .catch(function (error) {
-	    console.log(error);
+	    console.log('error here',error);
 	  });		
   }
   

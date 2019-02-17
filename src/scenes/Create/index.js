@@ -9,6 +9,7 @@ import getCardViaType from '../../utils/getCardViaType'
 import ComingSoonCard from '../../components/Card/Cards/comingSoonCard'
 import Button from '@material-ui/core/Button';
 import axios from 'axios'
+import getApi from '../../utils/getApiUrl'
 import { omit, get } from 'lodash'
 
 const Scrollable = styled.div`
@@ -40,7 +41,8 @@ export default withRouter((props) => {
   }
 
   const handleClick = () => {
-    axios.post('https://d0ob9xv927.execute-api.us-east-1.amazonaws.com/dev/tasks',
+    const api = getApi()
+    axios.post(`${api}/tasks`,
       {
         "triggerId": selectedTrigger.type,
         "actionId": selectedAction.type,

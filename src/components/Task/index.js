@@ -9,6 +9,7 @@ import ActionTransferCard from '../Card/Cards/actionTransferCard'
 import ExpansionPanel from '@material-ui/core/ExpansionPanel';
 import ExpansionPanelDetails from '@material-ui/core/ExpansionPanelDetails';
 import MuiExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
+import getApi from '../../utils/getApiUrl'
 import axios from 'axios'
 import styled from 'styled-components'
 
@@ -66,9 +67,10 @@ ExpansionPanelSummary.muiName = 'ExpansionPanelSummary';
 function Task({ task, ...props}) {
   const [expanded, setExpanded] = useState(false);
   const [active, setActive] = useState(task.isActive);
+  const api = getApi()
   const handleChange = async (e) => {
     setActive(!active)
-    const res = await axios.put(`https://d0ob9xv927.execute-api.us-east-1.amazonaws.com/dev/tasks/${task.id}`,{
+    const res = await axios.put(`${api}/tasks/${task.id}`,{
       isActive: !active
     })
     console.log(res)
