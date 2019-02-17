@@ -15,16 +15,17 @@ export default [
       name: 'price',
       type: 'number'
     }]
-  },
-  {
-    type: 'eth-block-mined',
-    fields: []
+  }
+  // ,
+  // {
+  //   type: 'eth-block-mined',
+  //   fields: []
     // fields: [{
     //   name: 'interval',
     //   placeholder: 'int',
     //   type: 'number'
     // }]
-  },
+  // },
   // {
   //   type: 'ethPriceRise',
   //   fields: [{

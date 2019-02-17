@@ -35,7 +35,6 @@ function renderActionCard(task) {
 	else {
 		return (
 			<ActionTransferCard task={task} isDisplay isTask/>
-			<ActionTransferCard isDisplay isTask />
 		)		
 	}
 }
