@@ -1,21 +1,45 @@
-import React from 'react'
+import React, { useState } from 'react'
 import Card from '../index.js'
 import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
+import actions from '../../../store/staticActions'
+import Input from '../../Input'
 
-function ActionTransfer(props) {
-  const { isDisplay, amount, tokenSymbol, fromAddress, toAddress  } = props;
+function ActionTransfer({ isDisplay, amount, toAddress, enableInputs, children, onChange, ...props }) {
 
-  const title = `Transfer${isDisplay ? ':' : ''}`;
+  const title = `Transfer ETH${isDisplay ? ':' : ''}`;
   const color = "blue";
+  const [values, setValues] = useState({})
+  const fields = actions.find(action => action.type === 'ethTransfer').fields
+  const handleChange = (field,e) => {
+    const newValues = {
+      ...values,
+      [field.name]: e.target.value
+    }
+    setValues(newValues)
+    onChange && onChange(newValues, 'ethTransfer', 'action')
+  }
 
   return (
   	<Card
   		title={title}
   		color={color}
   		isTrigger={false}
-  		isDisplay={isDisplay}z>
-      { isDisplay ? 
+      isDisplay={isDisplay}
+      {...props}>
+      {fields.map(field => {
+        return isDisplay 
+          ? <Typography key={field.name}>{field.name}</Typography> 
+          : enableInputs && <Input 
+            onChange={handleChange.bind(this,field)} 
+            key={field.name} 
+            value={values[field.name]}
+            label={field.name} 
+            type={field.type} 
+            />
+      })}
+      {children}
+      {/* { isDisplay ? 
         (
         	<Grid container spacing={24}>
         		<Grid item xs={6}>
@@ -57,7 +81,7 @@ function ActionTransfer(props) {
             </Typography>
           </div>
         )
-      }
+      } */}
   	</Card>
   );
 }
