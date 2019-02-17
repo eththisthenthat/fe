@@ -3,6 +3,7 @@ import Card from '../index.js'
 import Typography from '@material-ui/core/Typography';
 import triggers from '../../../store/staticTriggers'
 import Input from '../../Input'
+import { get } from 'lodash'
 
 function TriggerEthPriceDropCard({ isDisplay, price, enableInputs, onChange, task, ...props}) {
 
@@ -34,7 +35,7 @@ function TriggerEthPriceDropCard({ isDisplay, price, enableInputs, onChange, tas
                   Price
                 </Typography>
                 <Typography variant="h5" component="h2" className={'txt-white'}>
-                  {task.triggerMeta.price}
+                  {get(task, 'triggerMeta.price')}
                 </Typography>
               </div>
             )

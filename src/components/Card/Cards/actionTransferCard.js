@@ -4,6 +4,7 @@ import Typography from '@material-ui/core/Typography';
 import Grid from '@material-ui/core/Grid';
 import actions from '../../../store/staticActions'
 import Input from '../../Input'
+import { get } from 'lodash'
 
 function ActionTransfer({ isDisplay, amount, toAddress, enableInputs, children, onChange, task, ...props }) {
 
@@ -33,13 +34,13 @@ function ActionTransfer({ isDisplay, amount, toAddress, enableInputs, children, 
             Amount
           </Typography>
           <Typography variant="h5" component="h2" className={'txt-white'}>
-            {task.actionMeta.amount}
+            {get(task, 'actionMeta.amount')}
           </Typography>
           <Typography className={`txt-white mt${10}`} gutterBottom>
             To
           </Typography>
           <Typography variant="h5" component="h2" className={'txt-white'}>
-            {task.actionMeta.address}
+            {get(task, 'actionMeta.address')}
           </Typography>
         </div> : enableInputs && fields.map(field => {
                 return <Input 
