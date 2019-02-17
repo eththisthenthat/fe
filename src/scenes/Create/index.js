@@ -1,5 +1,7 @@
 import React, {useState} from 'react'
+import { withRouter } from 'react-router-dom'
 import styled from 'styled-components'
+import { useGlobalState } from '../../store'
 import { Container } from '../../components'
 import triggers from '../../store/staticTriggers'
 import actions from '../../store/staticActions'
@@ -7,6 +9,7 @@ import getCardViaType from '../../utils/getCardViaType'
 import ComingSoonCard from '../../components/Card/Cards/comingSoonCard'
 import Button from '@material-ui/core/Button';
 import axios from 'axios'
+import { omit, get } from 'lodash'
 
 const Scrollable = styled.div`
   height: 100%;
@@ -26,9 +29,12 @@ const CreateButton = (props) => <StyledButton
   Create
 </StyledButton>
 
-export default () => {
+export default withRouter((props) => {
+  console.log('props', props)
   const [selectedTrigger, setSelectedTrigger] = useState({})
   const [selectedAction, setSelectedAction] = useState({})
+  const [ethereum] = useGlobalState('ethereum');
+  const hash = get(ethereum, 'web3.eth.defaultAccount')
   const handleChange = (values, name, cardType) => {
     if(cardType === 'action') setSelectedAction({ type: name, ...values })
     if(cardType === 'trigger') setSelectedTrigger({ type: name, ...values })
@@ -36,20 +42,17 @@ export default () => {
 
   const handleClick = () => {
     console.log(selectedTrigger, selectedAction)
-  //   axios.post('https://it3ptht0ig.execute-api.us-east-1.amazonaws.com/dev/tasks',
-  //     {
-  //       "triggerId":"eth-price-below",
-  //       "actionId":"send-sms",
-  //       "address":"0x123",
-  //       "isActive": true,
-  //       "triggerMeta": {
-  //       "price": 100
-  //       },
-  //       "actionMeta": {
-  //       "address": "0x321",
-  //       "amount": 1
-  //       }
-  //   } )
+    axios.post('https://it3ptht0ig.execute-api.us-east-1.amazonaws.com/dev/tasks',
+      {
+        "triggerId": selectedTrigger.type,
+        "actionId": selectedAction.type,
+        "address": hash,
+        "isActive": true,
+        "triggerMeta": {...omit(selectedTrigger, 'type')},
+        "actionMeta": {...omit(selectedAction, 'type')},
+    } ).then( res => {
+      props.history.push('/tasks')
+    })
   }
 
   return <Container className='flex'>
@@ -90,4 +93,4 @@ export default () => {
       </Scrollable>
       </div>
     </Container>
-}
+})
