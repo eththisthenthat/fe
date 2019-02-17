@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import axios from 'axios'
 import { Container, Task } from '../../components'
 import { useGlobalState } from '../../store'
-import { omit, get } from 'lodash'
+import { get } from 'lodash'
 
 function TaskScene(props) {
 	let hasQueried = false;

@@ -30,7 +30,6 @@ const CreateButton = (props) => <StyledButton
 </StyledButton>
 
 export default withRouter((props) => {
-  console.log('props', props)
   const [selectedTrigger, setSelectedTrigger] = useState({})
   const [selectedAction, setSelectedAction] = useState({})
   const [ethereum] = useGlobalState('ethereum');
@@ -41,7 +40,6 @@ export default withRouter((props) => {
   }
 
   const handleClick = () => {
-    console.log(selectedTrigger, selectedAction)
     axios.post('https://d0ob9xv927.execute-api.us-east-1.amazonaws.com/dev/tasks',
       {
         "triggerId": selectedTrigger.type,
@@ -70,9 +68,9 @@ export default withRouter((props) => {
               key={trigger.type} 
               className='mb10 pointer' />
           })}
-          <ComingSoonCard disabled={selectedTrigger.type} title="Every ETH block mined" color="purple" />
-          <ComingSoonCard disabled={selectedTrigger.type} title="Contract Event fires" color="green" />
-          <ComingSoonCard disabled={selectedTrigger.type} title="Token transfer occurs" color="blueDark" />
+          <ComingSoonCard className='notAllowed' disabled={selectedTrigger.type} title="Every ETH block mined" color="purple" />
+          <ComingSoonCard className='notAllowed' disabled={selectedTrigger.type} title="Contract Event fires" color="green" />
+          <ComingSoonCard className='notAllowed' disabled={selectedTrigger.type} title="Token transfer occurs" color="blueDark" />
         </Scrollable>
       </div>
       <div>
@@ -90,8 +88,8 @@ export default withRouter((props) => {
                 {selectedAction.type && selectedTrigger.type && <CreateButton onClick={handleClick} />}
               </ActionCard>
           })}
-          <ComingSoonCard disabled={selectedAction.type} title="Send SMS Message" color="orange" />
-          <ComingSoonCard disabled={selectedAction.type} title="Send Email" color="black" />
+          <ComingSoonCard className='notAllowed' disabled={selectedAction.type} title="Send SMS Message" color="orange" />
+          <ComingSoonCard className='notAllowed' disabled={selectedAction.type} title="Send Email" color="black" />
         </Scrollable>
         </div>
       </div>

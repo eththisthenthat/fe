@@ -45,6 +45,7 @@ ${widthArray.join(' ')}
   &:before{display: none !important;}
 }
 .noPointer { cursor: default !important; }
+.notAllowed { cursor: not-allowed !important; }
 .pointer { cursor: pointer !important; }
 .noUnderline { text-decoration: none;}
 .underline { text-decoration: underline;}
@@ -74,6 +75,7 @@ ${widthArray.join(' ')}
 .box-shadow-inset   { box-shadow: ${theme.boxShadow.inset}}
 
 .relative { position: relative }
+.block { display: block }
 .capitalize { text-transform: capitalize !important }
 
 .fullWidth, .w100 {min-width: 100%}

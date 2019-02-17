@@ -6,7 +6,6 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 
 function TaskHistory(props) {
-  const { classes, taskId } = props;
 
   // Get Task History for Task
   const taskHistory = {

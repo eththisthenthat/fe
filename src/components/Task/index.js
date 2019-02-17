@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { withStyles } from '@material-ui/core/styles';
-import Switch from '@material-ui/core/Switch';
 import Checkbox from '@material-ui/core/Checkbox';
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
@@ -65,7 +64,7 @@ const ExpansionPanelSummary = withStyles({
 ExpansionPanelSummary.muiName = 'ExpansionPanelSummary';
 
 function Task(props) {
-  const { isDisplay, task, isActive } = props;
+  const { task, isActive } = props;
   const [expanded, setExpanded] = useState(false);
   const [active, setActive] = useState(isActive);
   const handleChange = async (e) => {

@@ -17,7 +17,7 @@ right: -38px;
 `
 
 const StyledCard = styled(Card)`
-  min-width: 350px;
+  width: 350px;
   opacity: ${(props) => props['data-disabled'] && '.3' };
   transform: ${(props) => props['data-disabled'] && 'scale(.9)' };
   padding-left: ${(props) => !props['data-trigger'] && props['data-task'] ? '30px' : 'inherit' };
