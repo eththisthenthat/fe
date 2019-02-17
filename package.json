@@ -10,6 +10,7 @@
     "bnc-assist": "^0.3.4",
     "jazzicon": "^1.5.0",
     "lodash": "^4.17.11",
+    "moment": "^2.24.0",
     "react": "^16.8.2",
     "react-dom": "^16.8.2",
     "react-hooks-global-state": "^0.7.0",

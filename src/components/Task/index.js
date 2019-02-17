@@ -77,13 +77,13 @@ function Task({ task, ...props}) {
 
   return (
   	<div className={`flex mb10`}>
-      <ExpansionPanel expanded={expanded} onChange={() => setExpanded(false)}>
+      <ExpansionPanel expanded={expanded} onChange={() => setExpanded(!expanded)}>
         <ExpansionPanelSummary>
   				{ renderTriggerCard(task) }
   				{ renderActionCard(task) }
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
-          <TaskHistory />
+          <TaskHistory task={task}/>
         </ExpansionPanelDetails>
       </ExpansionPanel>
       <StyledFormGroup>
