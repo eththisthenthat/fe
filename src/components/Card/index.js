@@ -18,23 +18,25 @@ right: -38px;
 
 const StyledCard = styled(Card)`
   min-width: 350px;
-  & ~ & {
-    /* handles when cards are right next to each other */
-    padding-left: ${(props) => props['data-trigger'] ? 'inherit' : '30px' };
-    border-top-right-radius: ${(props) => (props['data-display'] && props['data-trigger']) ? 0 : '' } !important;
-    border-bottom-right-radius: ${(props) => (props['data-display'] && props['data-trigger']) ? 0 : '' } !important;
-    border-top-left-radius: ${(props) => (props['data-display'] && !props['data-trigger']) ? 0 : '' } !important;
-    border-bottom-left-radius: ${(props) => (props['data-display'] && !props['data-trigger']) ? 0 : '' } !important;
+  /* handles when cards are right next to each other */
+  & + & {
+    padding-left: ${(props) => props['data-trigger'] && !props['data-display'] ? 'inherit' : '30px' };
   }
+  border-top-right-radius: ${(props) => (props['data-display'] && props['data-trigger']) ? 0 : '' } !important;
+  border-bottom-right-radius: ${(props) => (props['data-display'] && props['data-trigger']) ? 0 : '' } !important;
+  border-top-left-radius: ${(props) => (props['data-display'] && !props['data-trigger']) ? 0 : '' } !important;
+  border-bottom-left-radius: ${(props) => (props['data-display'] && !props['data-trigger']) ? 0 : '' } !important;
+}
 `
 
-function SimpleCard(props) {
-  const { title, color, isTrigger, isDisplay } = props;
+function SimpleCard({ title, color, isTrigger, isDisplay, className, ...props }) {
   return (
     <StyledCard 
-      className={`bg-${color} relative overflow-visible`} 
       data-display={isDisplay}
-      data-trigger={isTrigger}>
+      data-trigger={isTrigger}
+      className={`bg-${color} relative overflow-visible ${className || ''}`} 
+      {...props}
+      >
       <CardContent>
         <Typography className={`txt-white`} gutterBottom>
           {isDisplay ? (isTrigger ? "Trigger" : "Action") : (isTrigger ? "Trigger when:" : "Perform action:") }

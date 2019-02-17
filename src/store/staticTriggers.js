@@ -16,6 +16,15 @@ export default [
       type: 'number'
     }]
   },
+  {
+    type: 'ethBlockMined',
+    fields: []
+    // fields: [{
+    //   name: 'interval',
+    //   placeholder: 'int',
+    //   type: 'number'
+    // }]
+  },
   // {
   //   type: 'ethPriceRise',
   //   fields: [{
