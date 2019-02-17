@@ -30,12 +30,12 @@ function TriggerEthPriceDropCard({ isDisplay, price, enableInputs, onChange, tas
       {fields.map(field => {
         return isDisplay 
           ? (
-              <div>
+              <div key={field.name}>
                 <Typography className={`txt-white mt${10}`} gutterBottom>
                   Price
                 </Typography>
                 <Typography variant="h5" component="h2" className={'txt-white'}>
-                  {get(task, 'triggerMeta.price')}
+                  ${get(task, 'triggerMeta.price')}
                 </Typography>
               </div>
             )

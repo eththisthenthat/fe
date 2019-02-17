@@ -1,6 +1,6 @@
 import React, {useState} from 'react'
 import axios from 'axios'
-import { Container, Task } from '../../components'
+import { Container, Task, Link } from '../../components'
 import { useGlobalState } from '../../store'
 import { get } from 'lodash'
 
@@ -21,19 +21,22 @@ function TaskScene(props) {
 	  .catch(function (error) {
 	    console.log(error);
 	  });		
-	}
+  }
+  
 
 	return (
 		<Container className="f-jcsa">
 			<div>
-		  	<h2>My Tasks</h2>
-		  	{tasks.length > 0 ?
+		  	{tasks.length ? <h2>My Tasks</h2> : null}
+		  	{tasks.length ?
 		      tasks.map((data, i) => (
 				    <div key={i}>
 				    	<Task task={data} />
 				    </div>
-		      )) : 
-		      (<div>No Tasks available</div>)
+		      )) : <div className='tac mt20'>
+		        <div>No Tasks available</div>
+            <Link to='/create' className='underline mt5 block'>Create Task</Link>
+          </div>
 	    	}
       </div>
 		</Container>

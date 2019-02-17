@@ -22,7 +22,7 @@ export default () => {
     <Container className="f-jcsb f-row">
     <div className='f-aic'>
       <Link to ='/' className="f-aic mr30 txt-white">
-        <Typography variant="h6" className='txt-white'>eth</Typography>
+        <Typography variant="h6" className='txt-white'>ethis</Typography>
         <PlayArrow />
         <Typography variant="h6" className='txt-white'>that</Typography>
       </Link>

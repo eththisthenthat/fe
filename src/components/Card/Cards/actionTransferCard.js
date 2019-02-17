@@ -3,6 +3,7 @@ import Card from '../index.js'
 import Typography from '@material-ui/core/Typography';
 import actions from '../../../store/staticActions'
 import Input from '../../Input'
+import shorten from '../../../utils/shortenAddress'
 import { get } from 'lodash'
 
 function ActionTransfer({ isDisplay, amount, toAddress, enableInputs, children, onChange, task, ...props }) {
@@ -33,13 +34,13 @@ function ActionTransfer({ isDisplay, amount, toAddress, enableInputs, children, 
             Amount
           </Typography>
           <Typography variant="h5" component="h2" className={'txt-white'}>
-            {get(task, 'actionMeta.amount')}
+            {get(task, 'actionMeta.amount')} ETH
           </Typography>
           <Typography className={`txt-white mt${10}`} gutterBottom>
             To
           </Typography>
           <Typography variant="h5" component="h2" className={'txt-white'}>
-            {get(task, 'actionMeta.address')}
+            {shorten(get(task, 'actionMeta.address'))}
           </Typography>
         </div> : enableInputs && fields.map(field => {
                 return <Input 
