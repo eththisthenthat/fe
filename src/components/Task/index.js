@@ -65,17 +65,20 @@ const ExpansionPanelSummary = withStyles({
 ExpansionPanelSummary.muiName = 'ExpansionPanelSummary';
 
 function Task(props) {
-  const { isDisplay, task, isActive } = props;
+  const { isDisplay, task } = props;
   const [expanded, setExpanded] = useState(false);
-  const [active, setActive] = useState(isActive);
+  const [active, setActive] = useState(task.isActive);
   const handleChange = async (e) => {
-    setActive(e.target.value)
+    setActive(!active)
     const res = await axios.put(`https://d0ob9xv927.execute-api.us-east-1.amazonaws.com/dev/tasks/${task.id}`,{
-      active: e.target.value
+      isActive: !active
     })
     console.log(res)
     // handle api call
   }
+
+  console.log('active');
+  console.log(active);
 
   return (
   	<div className={`flex mb10`}>
