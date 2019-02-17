@@ -16,7 +16,7 @@ function TriggerEthPriceDropCard({ isDisplay, price, enableInputs, onChange, ...
       [field.name]: e.target.value
     }
     setValues(newValues)
-    onChange && onChange(newValues, 'ethPriceDrop', 'action')
+    onChange && onChange(newValues, 'ethPriceDrop', 'trigger')
   }
 
   return (

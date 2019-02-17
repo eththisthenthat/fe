@@ -13,7 +13,7 @@ function TaskScene(props) {
 		<Container>
 	  	<h2>My Tasks</h2>
       {tasks.map(data => (
-		    <div>
+		    <div key={data}>
 		    	<Task task={data} />
 		    </div>
       ))}

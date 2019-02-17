@@ -18,7 +18,7 @@ function renderTriggerCard(task) {
 	}
 	else {
 		return (
-			<TriggerEthPriceDropCard isDisplay />
+			<TriggerEthPriceDropCard isDisplay isTask />
 		)		
 	}
 } 
@@ -29,7 +29,7 @@ function renderActionCard(task) {
 	}
 	else {
 		return (
-			<ActionTransferCard isDisplay />
+			<ActionTransferCard isDisplay isTask />
 		)		
 	}
 }

@@ -29,7 +29,6 @@ export default () => {
   const [selectedTrigger, setSelectedTrigger] = useState({})
   const [selectedAction, setSelectedAction] = useState({})
   const handleChange = (values, name, cardType) => {
-    console.log('values, name, cardType', values, name, cardType)
     if(cardType === 'action') setSelectedAction({ type: name, ...values })
     if(cardType === 'trigger') setSelectedTrigger({ type: name, ...values })
   }
@@ -52,8 +51,8 @@ export default () => {
             key={trigger.type} 
             className='mb10 pointer' />
         })}
-        <ComingSoonCard title="Contract Event fires" color="green" />
-        <ComingSoonCard title="Token transfer occurs" color="blueDark" />
+        <ComingSoonCard disabled={selectedTrigger} title="Contract Event fires" color="green" />
+        <ComingSoonCard disabled={selectedTrigger} title="Token transfer occurs" color="blueDark" />
       </Scrollable>
     </div>
     <div>
@@ -71,8 +70,8 @@ export default () => {
               {selectedAction.type && selectedTrigger.type && <CreateButton onClick={handleClick} />}
             </ActionCard>
         })}
-        <ComingSoonCard title="Send SMS Message" color="orange" />
-        <ComingSoonCard title="Send Email" color="black" />
+        <ComingSoonCard disabled={selectedAction} title="Send SMS Message" color="orange" />
+        <ComingSoonCard disabled={selectedAction} title="Send Email" color="black" />
       </Scrollable>
       </div>
     </Container>
