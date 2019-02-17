@@ -4,11 +4,11 @@ import Typography from '@material-ui/core/Typography';
 import triggers from '../../../store/staticTriggers'
 import Input from '../../Input'
 
-function TriggerEthPriceDropCard({ isDisplay, price, inputsEnabled, ...props}) {
+function TriggerEthPriceDropCard({isDisplay, price, ...props}) {
 
-  const title = `ETH prices drop below${isDisplay ? ':' : ''}`;
-  const color = "red";
-  const fields = triggers.find(trigger => trigger.type === 'ethPriceDrop').fields
+  const title = `Every ETH block mined`;
+  const color = "purple";
+  const fields = triggers.find(trigger => trigger.type === 'ethBlockMined').fields
 
   return (
   	<Card
@@ -20,7 +20,7 @@ function TriggerEthPriceDropCard({ isDisplay, price, inputsEnabled, ...props}) {
       {fields.map(field => {
         return isDisplay 
           ? <Typography key={field.name}>{field.name}</Typography> 
-          : inputsEnabled && <Input key={field.name} label={field.name} type={field.type} />
+          : <Input key={field.name} label={field.name} {...field} />
       })}
   	</Card>
   );

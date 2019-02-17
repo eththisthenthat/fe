@@ -14,7 +14,7 @@ function ActionTransfer(props) {
   		title={title}
   		color={color}
   		isTrigger={false}
-  		isDisplay={isDisplay}>
+  		isDisplay={isDisplay}z>
       { isDisplay ? 
         (
         	<Grid container spacing={24}>

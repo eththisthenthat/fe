@@ -28,13 +28,14 @@ const StyledCard = styled(Card)`
   }
 `
 
-function SimpleCard(props) {
-  const { title, color, isTrigger, isDisplay } = props;
+function SimpleCard({ title, color, isTrigger, isDisplay, className, ...props }) {
   return (
     <StyledCard 
-      className={`bg-${color} relative overflow-visible`} 
       data-display={isDisplay}
-      data-trigger={isTrigger}>
+      data-trigger={isTrigger}
+      className={`bg-${color} relative overflow-visible ${className || ''}`} 
+      {...props}
+      >
       <CardContent>
         <Typography className={`txt-white`} gutterBottom>
           {isDisplay ? (isTrigger ? "Trigger" : "Action") : (isTrigger ? "Trigger when:" : "Perform action:") }
