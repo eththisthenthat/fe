@@ -5,7 +5,7 @@ import Grid from '@material-ui/core/Grid';
 import actions from '../../../store/staticActions'
 import Input from '../../Input'
 
-function ActionTransfer({ isDisplay, amount, toAddress, enableInputs, children, onChange, ...props }) {
+function ActionTransfer({ isDisplay, amount, toAddress, enableInputs, children, onChange, task, ...props }) {
 
   const title = `Transfer ETH${isDisplay ? ':' : ''}`;
   const color = "blue";
@@ -27,17 +27,30 @@ function ActionTransfer({ isDisplay, amount, toAddress, enableInputs, children, 
   		isTrigger={false}
       isDisplay={isDisplay}
       {...props}>
-      {fields.map(field => {
-        return isDisplay 
-          ? <Typography key={field.name}>{field.name}</Typography> 
-          : enableInputs && <Input 
-            onChange={handleChange.bind(this,field)} 
-            key={field.name} 
-            value={values[field.name]}
-            label={field.name} 
-            type={field.type} 
-            />
-      })}
+      { isDisplay ?
+        <div>
+          <Typography className={`txt-white mt${10}`} gutterBottom>
+            Amount
+          </Typography>
+          <Typography variant="h5" component="h2" className={'txt-white'}>
+            {task.actionMeta.amount}
+          </Typography>
+          <Typography className={`txt-white mt${10}`} gutterBottom>
+            To
+          </Typography>
+          <Typography variant="h5" component="h2" className={'txt-white'}>
+            {task.actionMeta.address}
+          </Typography>
+        </div> : enableInputs && fields.map(field => {
+                return <Input 
+                  onChange={handleChange.bind(this,field)} 
+                  key={field.name} 
+                  value={values[field.name]}
+                  label={field.name} 
+                  type={field.type} 
+                />
+          })
+      }
       {children}
       {/* { isDisplay ? 
         (

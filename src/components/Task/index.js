@@ -13,23 +13,27 @@ import MuiExpansionPanelSummary from '@material-ui/core/ExpansionPanelSummary';
 import styled from 'styled-components'
 
 function renderTriggerCard(task) {
-	if(task && task.trigger) {
-		return (<div></div>)
+	if(task.triggerId === 'eth-price-below') {
+		return (
+			<TriggerEthPriceDropCard task={task} isDisplay />
+		)
 	}
 	else {
 		return (
-			<TriggerEthPriceDropCard isDisplay />
+			<TriggerEthPriceDropCard task={task} isDisplay />
 		)		
 	}
 } 
 
 function renderActionCard(task) {
-	if(task && task.action) {
-		return (<div></div>)
+	if(task.triggerId === 'transfer-eth') {
+		return (
+			<ActionTransferCard task={task} isDisplay />
+		)
 	}
 	else {
 		return (
-			<ActionTransferCard isDisplay />
+			<ActionTransferCard task={task} isDisplay />
 		)		
 	}
 }
@@ -66,7 +70,7 @@ function Task(props) {
 
   return (
   	<div className={`flex mb10`}>
-      <ExpansionPanel expanded={expanded} onChange={() => setExpanded(!expanded)}>
+      <ExpansionPanel expanded={expanded} onChange={() => setExpanded(false)}>
         <ExpansionPanelSummary>
   				{ renderTriggerCard(task) }
   				{ renderActionCard(task) }

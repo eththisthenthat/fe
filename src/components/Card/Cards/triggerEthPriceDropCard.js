@@ -4,7 +4,7 @@ import Typography from '@material-ui/core/Typography';
 import triggers from '../../../store/staticTriggers'
 import Input from '../../Input'
 
-function TriggerEthPriceDropCard({ isDisplay, price, enableInputs, onChange, ...props}) {
+function TriggerEthPriceDropCard({ isDisplay, price, enableInputs, onChange, task, ...props}) {
 
   const title = `ETH prices drop below${isDisplay ? ':' : ''}`;
   const color = "red";
@@ -28,7 +28,16 @@ function TriggerEthPriceDropCard({ isDisplay, price, enableInputs, onChange, ...
       {...props}>
       {fields.map(field => {
         return isDisplay 
-          ? <Typography key={field.name}>{field.name}</Typography> 
+          ? (
+              <div>
+                <Typography className={`txt-white mt${10}`} gutterBottom>
+                  Price
+                </Typography>
+                <Typography variant="h5" component="h2" className={'txt-white'}>
+                  {task.triggerMeta.price}
+                </Typography>
+              </div>
+            )
           : enableInputs && <Input 
             onChange={handleChange.bind(this,field)} 
             key={field.name} 
