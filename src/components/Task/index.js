@@ -70,7 +70,7 @@ function Task(props) {
   const [active, setActive] = useState(isActive);
   const handleChange = async (e) => {
     setActive(e.target.value)
-    const res = await axios.put(`https://it3ptht0ig.execute-api.us-east-1.amazonaws.com/dev/tasks/${task.id}`,{
+    const res = await axios.put(`https://d0ob9xv927.execute-api.us-east-1.amazonaws.com/dev/tasks/${task.id}`,{
       active: e.target.value
     })
     console.log(res)
