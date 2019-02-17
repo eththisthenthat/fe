@@ -65,7 +65,7 @@ function Task(props) {
   const [active, setActive] = useState(isActive);
 
   return (
-  	<div className={`flex`}>
+  	<div className={`flex mb10`}>
       <ExpansionPanel expanded={expanded} onChange={() => setExpanded(!expanded)}>
         <ExpansionPanelSummary>
   				{ renderTriggerCard(task) }
