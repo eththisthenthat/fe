@@ -26,7 +26,7 @@ export default () => {
       <Scrollable>
         {actions.map(action=> {
           const ActionCard = getCardViaType(action.type) 
-          return <ActionCard key={action.type} className='mb10' display/>
+          return <ActionCard key={action.type} className='mb10' />
         })}
       </Scrollable>
       </div>
