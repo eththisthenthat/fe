@@ -77,9 +77,6 @@ function Task(props) {
     // handle api call
   }
 
-  console.log('active');
-  console.log(active);
-
   return (
   	<div className={`flex mb10`}>
       <ExpansionPanel expanded={expanded} onChange={() => setExpanded(false)}>
