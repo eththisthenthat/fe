@@ -18,7 +18,8 @@ right: -38px;
 
 const StyledCard = styled(Card)`
   min-width: 350px;
-  /* handles when cards are right next to each other */
+  opacity: ${(props) => props['data-disabled'] && '.3' };
+  transform: ${(props) => props['data-disabled'] && 'scale(.9)' };
   & + & {
     padding-left: ${(props) => props['data-trigger'] && !props['data-display'] ? 'inherit' : '30px' };
   }
@@ -29,11 +30,12 @@ const StyledCard = styled(Card)`
 }
 `
 
-function SimpleCard({ title, color, isTrigger, isDisplay, className, ...props }) {
+function SimpleCard({ title, color, isTrigger, isDisplay, className, disabled, ...props }) {
   return (
     <StyledCard 
       data-display={isDisplay}
       data-trigger={isTrigger}
+      data-disabled={disabled}
       className={`bg-${color} relative overflow-visible ${className || ''}`} 
       {...props}
       >
