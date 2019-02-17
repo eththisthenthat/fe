@@ -4,17 +4,19 @@ import Typography from '@material-ui/core/Typography';
 import triggers from '../../../store/staticTriggers'
 import Input from '../../Input'
 
-function TriggerEthPriceDropCard({ isDisplay, price, enableInputs, ...props}) {
+function TriggerEthPriceDropCard({ isDisplay, price, enableInputs, onChange, ...props}) {
 
   const title = `ETH prices drop below${isDisplay ? ':' : ''}`;
   const color = "red";
   const [values, setValues] = useState({})
   const fields = triggers.find(trigger => trigger.type === 'ethPriceDrop').fields
   const handleChange = (field,e) => {
-    setValues({
+    const newValues = {
       ...values,
       [field.name]: e.target.value
-    })
+    }
+    setValues(newValues)
+    onChange && onChange(newValues, 'ethPriceDrop', 'action')
   }
 
   return (
