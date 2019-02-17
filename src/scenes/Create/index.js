@@ -55,42 +55,44 @@ export default withRouter((props) => {
     })
   }
 
-  return <Container className='flex'>
-    <div className='mr20'>
-      <h2>Select Trigger</h2>
-      <Scrollable>
-        {triggers.map(trigger => {
-          const TriggerCard = getCardViaType(trigger.type) 
-          return <TriggerCard 
-            onClick={()=>setSelectedTrigger({type: trigger.type})}
-            enableInputs={trigger.type === selectedTrigger.type} 
-            disabled={selectedTrigger.type && trigger.type !== selectedTrigger.type} 
-            onChange={handleChange}
-            key={trigger.type} 
-            className='mb10 pointer' />
-        })}
-        <ComingSoonCard disabled={selectedTrigger.type} title="Contract Event fires" color="green" />
-        <ComingSoonCard disabled={selectedTrigger.type} title="Token transfer occurs" color="blueDark" />
-      </Scrollable>
-    </div>
-    <div>
-      <h2>Select Action</h2>
-      <Scrollable>
-        {actions.map(action=> {
-          const ActionCard = getCardViaType(action.type) 
-          return <ActionCard
-            onClick={()=>setSelectedAction({type: action.type})}
-            enableInputs={action.type === selectedAction.type} 
-            disabled={selectedAction.type && (action.type !== selectedAction.type)} 
-            key={action.type} 
-            onChange={handleChange}
-            className='mb10 pointer'>
-              {selectedAction.type && selectedTrigger.type && <CreateButton onClick={handleClick} />}
-            </ActionCard>
-        })}
-        <ComingSoonCard disabled={selectedAction.type} title="Send SMS Message" color="orange" />
-        <ComingSoonCard disabled={selectedAction.type} title="Send Email" color="black" />
-      </Scrollable>
+  return <Container className='f-jcsa'>
+    <div className='flex'>
+      <div className='mr20'>
+        <h2>Select Trigger</h2>
+        <Scrollable>
+          {triggers.map(trigger => {
+            const TriggerCard = getCardViaType(trigger.type) 
+            return <TriggerCard 
+              onClick={()=>setSelectedTrigger({type: trigger.type})}
+              enableInputs={trigger.type === selectedTrigger.type} 
+              disabled={selectedTrigger.type && trigger.type !== selectedTrigger.type} 
+              onChange={handleChange}
+              key={trigger.type} 
+              className='mb10 pointer' />
+          })}
+          <ComingSoonCard disabled={selectedTrigger.type} title="Contract Event fires" color="green" />
+          <ComingSoonCard disabled={selectedTrigger.type} title="Token transfer occurs" color="blueDark" />
+        </Scrollable>
+      </div>
+      <div>
+        <h2>Select Action</h2>
+        <Scrollable>
+          {actions.map(action=> {
+            const ActionCard = getCardViaType(action.type) 
+            return <ActionCard
+              onClick={()=>setSelectedAction({type: action.type})}
+              enableInputs={action.type === selectedAction.type} 
+              disabled={selectedAction.type && (action.type !== selectedAction.type)} 
+              key={action.type} 
+              onChange={handleChange}
+              className='mb10 pointer'>
+                {selectedAction.type && selectedTrigger.type && <CreateButton onClick={handleClick} />}
+              </ActionCard>
+          })}
+          <ComingSoonCard disabled={selectedAction.type} title="Send SMS Message" color="orange" />
+          <ComingSoonCard disabled={selectedAction.type} title="Send Email" color="black" />
+        </Scrollable>
+        </div>
       </div>
     </Container>
 })

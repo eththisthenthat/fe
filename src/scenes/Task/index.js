@@ -10,13 +10,15 @@ function TaskScene(props) {
   ];
 
 	return (
-		<Container>
-	  	<h2>My Tasks</h2>
-      {tasks.map(data => (
-		    <div key={data}>
-		    	<Task task={data} />
-		    </div>
-      ))}
+		<Container className="f-jcsa">
+      <div>
+        <h2>My Tasks</h2>
+        {tasks.map(data => (
+          <div key={data}>
+            <Task task={data} />
+          </div>
+        ))}
+      </div>
 		</Container>
 	)
 }
