@@ -6,6 +6,7 @@ import actions from '../../store/staticActions'
 import getCardViaType from '../../utils/getCardViaType'
 import ComingSoonCard from '../../components/Card/Cards/comingSoonCard'
 import Button from '@material-ui/core/Button';
+import axios from 'axios'
 
 const Scrollable = styled.div`
   height: 100%;
@@ -35,6 +36,20 @@ export default () => {
 
   const handleClick = () => {
     console.log(selectedTrigger, selectedAction)
+  //   axios.post('https://it3ptht0ig.execute-api.us-east-1.amazonaws.com/dev/tasks',
+  //     {
+  //       "triggerId":"eth-price-below",
+  //       "actionId":"send-sms",
+  //       "address":"0x123",
+  //       "isActive": true,
+  //       "triggerMeta": {
+  //       "price": 100
+  //       },
+  //       "actionMeta": {
+  //       "address": "0x321",
+  //       "amount": 1
+  //       }
+  //   } )
   }
 
   return <Container className='flex'>
@@ -51,8 +66,8 @@ export default () => {
             key={trigger.type} 
             className='mb10 pointer' />
         })}
-        <ComingSoonCard disabled={selectedTrigger} title="Contract Event fires" color="green" />
-        <ComingSoonCard disabled={selectedTrigger} title="Token transfer occurs" color="blueDark" />
+        <ComingSoonCard disabled={selectedTrigger.type} title="Contract Event fires" color="green" />
+        <ComingSoonCard disabled={selectedTrigger.type} title="Token transfer occurs" color="blueDark" />
       </Scrollable>
     </div>
     <div>
@@ -70,8 +85,8 @@ export default () => {
               {selectedAction.type && selectedTrigger.type && <CreateButton onClick={handleClick} />}
             </ActionCard>
         })}
-        <ComingSoonCard disabled={selectedAction} title="Send SMS Message" color="orange" />
-        <ComingSoonCard disabled={selectedAction} title="Send Email" color="black" />
+        <ComingSoonCard disabled={selectedAction.type} title="Send SMS Message" color="orange" />
+        <ComingSoonCard disabled={selectedAction.type} title="Send Email" color="black" />
       </Scrollable>
       </div>
     </Container>

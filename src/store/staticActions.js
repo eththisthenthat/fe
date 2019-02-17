@@ -1,6 +1,6 @@
 export default [
   {
-    type: 'ethTransfer',
+    type: 'eth-transfer',
     fields: [
       {
       name: 'address',
@@ -12,4 +12,17 @@ export default [
       }
     ]
   },
+  // {
+  //   type: 'send-sms',
+  //   fields: [
+  //     {
+  //     name: 'number',
+  //     type: 'number'
+  //     },
+  //     {
+  //     name: 'message',
+  //     type: 'string'
+  //     }
+  //   ]
+  // },
 ]

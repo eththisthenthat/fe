@@ -8,7 +8,7 @@ function TriggerEthPriceDropCard({isDisplay, price, ...props}) {
 
   const title = `Every ETH block mined`;
   const color = "purple";
-  const fields = triggers.find(trigger => trigger.type === 'ethBlockMined').fields
+  const fields = triggers.find(trigger => trigger.type === 'eth-block-mined').fields
 
   return (
   	<Card

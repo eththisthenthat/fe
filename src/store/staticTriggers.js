@@ -1,7 +1,7 @@
 // get('/trigger/id) =>
 
 // {
-//   type: 'ethPriceDrop',
+//   type: 'eth-price-below',
 //   price: 220
 // }
 
@@ -10,14 +10,14 @@
 
 export default [
   {
-    type: 'ethPriceDrop',
+    type: 'eth-price-below',
     fields: [{
       name: 'price',
       type: 'number'
     }]
   },
   {
-    type: 'ethBlockMined',
+    type: 'eth-block-mined',
     fields: []
     // fields: [{
     //   name: 'interval',
