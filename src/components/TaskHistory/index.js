@@ -11,14 +11,14 @@ function TaskHistory(props) {
   // Get Task History for Task
   const taskHistory = {
   	data: [
-  		{id: 1, status: 'Success', time: 'Hold1', "result": "Test"},
-  		{id: 2, status: 'Success', time: 'Hold2', "result": "Test"},
-  		{id: 3, status: 'Success', time: 'Hold3', "result": "Test"}
+  		{id: 1, status: 'Success', time: 'Hold1'},
+  		{id: 2, status: 'Success', time: 'Hold2'},
+  		{id: 3, status: 'Success', time: 'Hold3'}
   	]
   }
 
   return (
-    <div>
+    <div style={{width: '100%'}}>
     	<h3>Task History</h3>
       <Table>
         <TableHead>
