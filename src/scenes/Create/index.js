@@ -68,9 +68,9 @@ export default withRouter((props) => {
               key={trigger.type} 
               className='mb10 pointer' />
           })}
-          <ComingSoonCard className='notAllowed' disabled={selectedTrigger.type} title="Every ETH block mined" color="purple" />
-          <ComingSoonCard className='notAllowed' disabled={selectedTrigger.type} title="Contract Event fires" color="green" />
-          <ComingSoonCard className='notAllowed' disabled={selectedTrigger.type} title="Token transfer occurs" color="blueDark" />
+          <ComingSoonCard className='notAllowed' disabled={selectedTrigger.type} isTrigger={true} title="Every ETH block mined" color="purple" />
+          <ComingSoonCard className='notAllowed' disabled={selectedTrigger.type} isTrigger={true} title="Contract Event fires" color="green" />
+          <ComingSoonCard className='notAllowed' disabled={selectedTrigger.type} isTrigger={true} title="Token transfer occurs" color="blueDark" />
         </Scrollable>
       </div>
       <div>
@@ -88,10 +88,11 @@ export default withRouter((props) => {
                 {selectedAction.type && selectedTrigger.type && <CreateButton onClick={handleClick} />}
               </ActionCard>
           })}
+          <ComingSoonCard className='notAllowed' disabled={selectedAction.type} title="Add collateral to CDP" color="magenta" />
           <ComingSoonCard className='notAllowed' disabled={selectedAction.type} title="Send SMS Message" color="orange" />
           <ComingSoonCard className='notAllowed' disabled={selectedAction.type} title="Send Email" color="black" />
         </Scrollable>
-        </div>
+      </div>
       </div>
     </Container>
 })

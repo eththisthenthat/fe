@@ -21,7 +21,8 @@ const baseColors = {
   blue:         '#337DF4',
   blueDark:     '#093479',
   green:        '#00A86B',
-  greenLightest:'#D9F7EC'
+  greenLightest:'#D9F7EC',
+  magenta:       '#ea00a5'
 }
 
 const namedColors = {
