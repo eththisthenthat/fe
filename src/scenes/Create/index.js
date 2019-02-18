@@ -1,13 +1,13 @@
 import React, {useState} from 'react'
 import { withRouter } from 'react-router-dom'
 import styled from 'styled-components'
-import { useGlobalState } from '../../store'
 import { Container } from '../../components'
 import triggers from '../../store/staticTriggers'
 import actions from '../../store/staticActions'
 import getCardViaType from '../../utils/getCardViaType'
 import ComingSoonCard from '../../components/Card/Cards/comingSoonCard'
 import Button from '@material-ui/core/Button';
+import { useGlobalState } from '../../store'
 import axios from 'axios'
 import getApi from '../../utils/getApiUrl'
 import { omit, get } from 'lodash'
@@ -33,28 +33,33 @@ const CreateButton = (props) => <StyledButton
 export default withRouter((props) => {
   const [selectedTrigger, setSelectedTrigger] = useState({})
   const [selectedAction, setSelectedAction] = useState({})
+  const [message, setMessage] = useState()
   const [ethereum] = useGlobalState('ethereum');
   const hash = get(ethereum, 'web3.eth.defaultAccount')
   const handleChange = (values, name, cardType) => {
     if(cardType === 'action') setSelectedAction({ type: name, ...values })
     if(cardType === 'trigger') setSelectedTrigger({ type: name, ...values })
   }
-
+  const handleDisableClick = () => {
+    setMessage('temporarily disabled')
+  }
+  
   const handleClick = () => {
     const api = getApi()
     axios.post(`${api}/tasks`,
-      {
-        "triggerId": selectedTrigger.type,
-        "actionId": selectedAction.type,
-        "address": hash,
-        "isActive": true,
-        "triggerMeta": {...omit(selectedTrigger, 'type')},
-        "actionMeta": {...omit(selectedAction, 'type')},
+    {
+      "triggerId": selectedTrigger.type,
+      "actionId": selectedAction.type,
+      "address": hash,
+      "isActive": true,
+      "triggerMeta": {...omit(selectedTrigger, 'type')},
+      "actionMeta": {...omit(selectedAction, 'type')},
     } ).then( res => {
       props.history.push('/tasks')
     })
   }
-
+  console.log('handle click disabled', handleClick)
+  
   return <Container className='f-jcsa'>
     <div className='flex'>
       <div className='mr20'>
@@ -87,7 +92,10 @@ export default withRouter((props) => {
               key={action.type} 
               onChange={handleChange}
               className='mb10 pointer'>
-                {selectedAction.type && selectedTrigger.type && <CreateButton onClick={handleClick} />}
+                {
+                  selectedAction.type 
+                  && selectedTrigger.type 
+                  && (message ? <div className='txt-white tac mt20'>{message}</div> : <CreateButton onClick={handleDisableClick} />)}
               </ActionCard>
           })}
           <ComingSoonCard className='notAllowed' disabled={selectedAction.type} title="Add collateral to CDP" color="magenta" />
