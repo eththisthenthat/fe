@@ -7,7 +7,7 @@ import { dispatch } from './store'
 import * as serviceWorker from './serviceWorker';
 var bncAssistConfig = {
   dappId: '26fb439f-ff1e-48f8-9ddf-29a6dcf7fd49',       // [String] The API key supplied to you by Blocknative when you sign up for an account
-  networkId:  4 // [Integer] The network ID of the Ethereum network your dapp is deployd on.
+  networkId:  4 // [Integer] The network ID of the Ethereum network your dapp is deployed on.
 };
 
 var assistInstance = assist.init(bncAssistConfig);
@@ -18,8 +18,8 @@ assistInstance.onboard()
       type: 'receiveWeb3',
       web3: window.web3
     })
-    // User has been successfully onboarded and is ready to transact
-    // This means we can be sure of the follwing user properties:
+    // User has been successfully onboard-ed and is ready to transact
+    // This means we can be sure of the following user properties:
     //  - They are using a compatible browser
     //  - They have a web3-enabled wallet installed
     //  - The wallet is connected to the config-specified networkId
